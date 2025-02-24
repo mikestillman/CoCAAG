@@ -1,0 +1,281 @@
+\documentclass[11pt]{amsart}
+
+
+\usepackage{etoolbox}
+\newtoggle{answers}
+\togglefalse{answers}
+
+% Comment out the following line to not show answers.
+\toggletrue{answers}
+
+
+
+
+\usepackage{amssymb,amsmath,amsfonts,amsthm,mathrsfs,fullpage}
+%,amsmath,amsfonts,amsthm,mathrsfs}
+\usepackage[all]{xy}  % for commutative diagrams
+\SelectTips{cm}{10}
+\usepackage{mathrsfs,float}
+\numberwithin{equation}{section}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,positioning,calc,patterns,cd}
+
+
+% Color comments
+\usepackage{color}
+
+%\definecolor{backgroundcolor}{rgb}{1,1,0.8}
+%\pagecolor{backgroundcolor}
+
+\newcommand{\commentr}[1]{{\color{red} [#1]}}
+\newcommand{\commentb}[1]{{\color{blue} [#1]}}
+\newcommand{\commentm}[1]{{\color{magenta} [#1]}}
+
+\newcommand{\bnum}{\begin{enumerate}} %Use with \item to create numbered lists
+\newcommand{\enum}{\end{enumerate}}
+\newcommand{\babc}{\bnum\renewcommand{\labelenumi}{(\alph{enumi})}}%Use with \item for abc lists
+\newcommand{\eabc}{\end{enumerate}}
+\newcommand{\bijk}{\bnum\renewcommand{\labelenmi}{\roman{enumi}.}}%Roman numeral lists
+\newcommand{\eijk}{\end{enumerate}}
+
+\usepackage{verbatim,moreverb}
+
+\newcommand{\kk}{\mathbb k}
+\renewcommand{\AA}{\mathbb A}
+\newcommand{\BB}{\mathbb B}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\DD}{\mathbb D}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\GG}{\mathbb G}
+\newcommand{\HH}{\mathbb H}
+\newcommand{\II}{\mathbb I}
+\newcommand{\JJ}{\mathbb J}
+\newcommand{\KK}{\mathbb K}
+\newcommand{\LL}{\mathbb L}
+\newcommand{\MM}{\mathbb M}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\renewcommand{\SS}{\mathbb S}
+\newcommand{\TT}{\mathbb T}
+\newcommand{\UU}{\mathbb U}
+\newcommand{\VV}{\mathbb V}
+\newcommand{\WW}{\mathbb W}
+\newcommand{\XX}{\mathbb X}
+\newcommand{\YY}{\mathbb Y}
+\newcommand{\ZZ}{\mathbb Z} 
+
+\newcommand{\Zhat}{\widehat\ZZ}
+
+\newcommand{\calA}{\mathcal A} 
+\newcommand{\C}{\mathcal C} 
+
+\newcommand{\OO}{\mathcal O}
+\newcommand{\F}{\mathscr F} %\renewcommand{\P}{\mathscr P}
+\newcommand{\Hh}{\mathscr H} 
+\newcommand{\N}{\mathscr N}\newcommand{\Ii}{\mathscr I}
+\newcommand{\Z}{\mathscr Z}
+\newcommand{\bb}{\mathfrak b}\newcommand{\m}{\mathfrak m}\newcommand{\M}{\mathcal M}
+\newcommand{\aA}{\mathfrak a} \newcommand{\fF}{\mathfrak f}
+\newcommand{\qq}{\mathfrak q} 
+\newcommand{\p}{\mathfrak p} \newcommand{\Pp}{\mathfrak P}
+\newcommand{\norm}[1]{ \left|\left| #1 \right|\right|  }
+\newcommand{\ang}[1]{ \langle #1 \rangle  }
+\newcommand{\aside}[1]{ \marginpar{#1} }
+\newcommand\legendre[2]{\Bigl(\frac{#1}{#2}\Bigr) }   \newcommand\Angle[2]{\langle #1,#2 \rangle}
+
+
+\def\Spec{\operatorname{Spec}} \def\id{\operatorname{id}}
+\def\Div{\operatorname{Div}}\def\tr{\operatorname{tr}}
+\def\Supp{\operatorname{Supp}} \def\Gal{\operatorname{Gal}}
+
+\def \GL {\operatorname{GL}_2}  
+\def \PGL {\operatorname{PGL}_2}
+\def \SL {\operatorname{SL}_2}
+\def \PSL {\operatorname{PSL}_2}
+
+\def\Res{\operatorname{Res}}
+\def\Aut{\operatorname{Aut}} \def\End{\operatorname{End}}
+
+\def\Prim{\operatorname{Prim}} \def\Fr{\operatorname{Frob}}
+\def\lcm{\operatorname{lcm}} \def\Li{\operatorname{Li}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Card}{\operatorname{Card}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\coimage}{\operatorname{coimage}}
+\newcommand{\image}{\operatorname{image}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\def \Ev {\operatorname{Ev}}
+\def \rad {\operatorname{rad}}
+
+\def \G {\mathcal G}
+\def \B {\mathcal B}
+
+
+
+
+
+\def\power{\mathcal{P}}
+\def\Xx{\mathscr X} \def\Zz{\mathscr Z} \def\Ss{\mathscr S} \def\Gg{\mathscr G}
+\def\Rr{\mathscr R}\def\Dd{\mathcal D}
+ \def\cC{\mathfrak c}
+\def\join{\vee}
+\def\meet{\wedge}
+\def\ord{\operatorname{ord}}
+
+\def\tors{\operatorname{tors}}
+\def\sfree{\operatorname{sf}}
+
+
+\def\bbar#1{\setbox0=\hbox{$#1$}\dimen0=.2\ht0 \kern\dimen0 \overline{\kern-\dimen0 #1}}
+\newcommand{\Qbar}{{\overline{\mathbb Q}}} 
+\newcommand{\Kbar}{\bbar{K}} 
+\newcommand{\kbar}{\bbar{k}} 
+\newcommand{\Fbar}{\bbar{F}} 
+\newcommand{\FFbar}{\overline{\FF}} 
+
+\newcommand{\smallpmod}[1]{\text{ }(\operatorname{mod } #1 )}
+
+\newcommand{\defi}[1]{\textsf{#1}} % for defined terms
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{conj}[thm]{Conjecture} 
+\newtheorem{example}[thm]{Example}
+\newtheorem{claim}{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{remarks}[thm]{Remarks}
+
+
+\newenvironment{romanenum}{\hfill \begin{enumerate} \renewcommand{\theenumi}{\roman{enumi}}}{\end{enumerate}}
+\renewcommand{\Re}{\operatorname{Re}}
+
+\definecolor{webbrown}{rgb}{.6,0,0}
+\usepackage[
+   %    draft,
+        colorlinks,
+        linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown, 
+        backref,
+        %pdfauthor={David Zywina}, % add other authors
+    %   pdftitle={Paper title goes here},
+]{hyperref}
+\usepackage[alphabetic,backrefs,lite]{amsrefs} % for bibliography
+%Uncomment to double space:
+%\renewcommand{\baselinestretch}{2}
+
+\newcounter{excount}
+\newcommand\exercise[1]{\addtocounter{excount}{1}\noindent\textbf{Problem \arabic{excount}: }#1{$ $}\\}
+
+\newcommand\answer[1]{
+\iftoggle{answers}{{\noindent \color{blue} #1\\ }}{ } 
+}
+
+
+\begin{document}
+\setcounter{excount}{0}
+
+\title{CoCAAG, Winter 2025: Week 6 Questions}
+\maketitle
+\vspace{0.5cm}
+\noindent \textbf{During ``project time'',
+  work through a jupyter notebook, try exercises, or do these!}
+
+\medskip
+
+In some of the problems, you are asked to try your methods on one or some of the following varieties:
+\babc
+\item the cubic surface $X$ in $\PP^3$: $x^3+y^3+z^3+w^3 = 0$
+\item the Fermat quartic surface   $x^4+y^4+z^4+w^4=0$, this is what is called a K3 surface,
+\item the variety $X \subset \PP^4$ whose ideal is given by the 3 by 3 minors of a
+  (fairly random) $4 \times 3$ matrix of linear forms in 5 variables.
+\item Other possibly random hypersurfaces in $\PP^n$ of degree $d$, e.g. $(n,d) = (4,5), (4,4), (4,6)$.
+  \eabc
+  
+\bigskip
+
+\exercise{
+  Consider the special case $\PP^2$.  Compute from the definition in class the cohomologies of $\OO_{\PP^2}(d)$, for all $d$,
+  verifying Serre's theorem in this case.  Hint: this complex with infinitely generated modules is (over the base field)
+  the direct sum of complexes corresponding to each monomial $x_0^a x_1^b x_2^c$, for $(a,b,c) \in \ZZ^3$.
+  Once one sees the proof in this special case, it is pretty easy to generalize to prove the entire theorem (and, in fact,
+  even more, that we haven't stated yet!).
+}
+
+\exercise{
+  In this exercise we prove the important theorems of Serre ((b), (c)).
+  After proving (a),
+  use Serre's ``local duality'' theorem to prove (b), (c).
+  Here, suppose that $\widetilde{M}$ is
+  a coherent sheaf on $\PP^n$ where $M$ is a finitely generated graded
+  $S$-module.
+  \babc
+\item Show that the $k$-dual of $M$ is zero in all degrees $d \gg 0$.
+\item Show that $H^i(\OO_X(d)) = 0$, for $i > 0$ and $d \gg 0$.
+\item Show that $\OO_X(d)$ is generated by global sections for $d \gg 0$.  This means that the
+  natural map $M_d \to H^0(\OO_X(d))$ is an isomorphism.
+  \eabc
+}
+
+\exercise{
+  Consider the projective variety $X$ which is given by the zeros of $x^3 + y^3 + z^3$, in $\PP^2$ (this is an elliptic curve).
+  \babc
+\item Find the dimensions of the cohomology vector spaces of $\OO_X$.
+  \item Compute ``by hand'' a module which sheafifies to $\Omega^1_X$.
+    \item Find the dimensions of the cohomology vector spaces of 1-forms $\Omega^1_X$.
+      \eabc
+}
+
+\exercise{
+  Compute the sheaf cohomology of the sheaf associated to $\operatorname{Hom}(I/I^2, S/I)$, for some choices of monomial ideals $I$ in a polynomial ring $S$.
+  (start with e.g. $I = (x^2, xy, y^2) \subset k[x,y,z]$).
+  The $H^0$ of this turns out to be the tangent space to the point $[I]$ on its Hilbert scheme.
+  }
+
+\exercise{
+  Consider the projective variety $X$ which is given by the 3 by 3 minors of a (random) 3x4 matrix of linear forms in $\PP^4$
+  mentioned earlier.
+Find the dimensions of the cohomology vector spaces of 1-forms $\Omega^1_X$.  Compute the Hodge diamond of $X$.
+}
+{\tiny\begin{verbatim}
+  S = ZZ/32003[a,b,c,d,e]
+  M = random(S^3, S^{4:-1})
+  I = minors(3, M)
+  dim I -- one more than the dimension as a projective variety
+  codim I,  degree I
+\end{verbatim}
+  }
+%%   hilbertPolynomial(S^1/I, Projective => false)
+%%   for i from 0 to 10 list hilbertFunction(i, S^1/I)
+%%   hilbertSeries I
+%%   reduceHilbert oo
+
+%%   X = variety I
+
+%%   for i from 0 to 2 list HH^i OO_X
+%%   R = S/I
+%%   M1 = ker(vars S ** R)
+%%   M2 = image((jacobian I) ** R)
+%%   M = prune(M1/M2);
+%%   Mp = coker lift(presentation M, S);
+%%   ann Mp == I
+%%   hilbertPolynomial(Mp, Projective => false) -- euler characteristic is -11, this matches!
+%%   HH^0 sheaf Mp
+%%   HH^1 sheaf Mp
+%%   HH^2 sheaf Mp
+
+%%   cotangentSheaf X -- wow, really long!!
+%%   elapsedTime cotangentSheaf(X, MinimalGenerators => false)
+%% \end{verbatim}}
+
+
+\end{document}
