@@ -82,7 +82,7 @@ myfactors RingElement := (f) -> (
   
 end--
 restart
-load "pd-exercise-1.m2"
+load "week9.m2"
 
 ----------------
 -- Problem A ---
@@ -91,7 +91,7 @@ load "pd-exercise-1.m2"
 -- Consider the following ideal, which arises from a Kuramoto
 -- oscillator problem (I might describe this construction in class).
 kk = QQ
- -- kk = QQ -- choose one of these two fields, and comment out the other one
+ -- kk = ZZ/101 -- choose one of these two fields, and comment out the other one
 R = kk[x_1..y_4];
 gens R
 
@@ -108,9 +108,14 @@ I = ideal(-y_2-y_3-y_4,
 (dim I, degree I)
 -- Problem: compute a primary decomposition of I, using methods from class.
 -- Here is Macaulay2's result:
+minimalPrimes I
 primaryDecomposition I
 -- actually, we see lots of components from setting each x_i^2 = 1.
-easy = ideal(x_1^2-1, x_2^2-1,x_3^2-1,x_4^2-1,y_1,y_2,y_3,y_4)
+easy = ideal(x_1^2-1,
+    x_2^2-1,
+    x_3^2-1,
+    x_4^2-1,
+    y_1,y_2,y_3,y_4)
 I1 = I : easy
 I2 = I : I1
 I == intersect(I1, I2)
@@ -125,13 +130,24 @@ I == intersect(I1, I2)
 -----------------
 -- Try the functions univariate, univariates out to make sure you understand what they return
 -- and what they do.  Use them on (perhaps) I1 or I.
-
+netList univariates(I1)
 -----------------
 -- Exercise A2 --
 -----------------
 -- Find a primary decomposition, and the minimal primes, for I1 and I.
+for fac in univariate(x_1, I1) list print fac
+J1s = for fac in univariate(x_1, I1) list trim (I1 + ideal(fac_0))
+intersect(J1s) == I1
+J1s/degree
+J1s_0
 
-
+Rlex = newRing(R, MonomialOrder => Lex)
+Ls = for J in J1s list sub(J, Rlex)
+see ideal groebnerBasis Ls_0 -- is in normal position
+see ideal groebnerBasis Ls_1 -- is prime
+see ideal groebnerBasis Ls_2 -- 
+univariate(y_4, Ls_1)
+univariate(y_4, Ls_2)
 ----------------
 -- Problem B ---
 ----------------
