@@ -148,6 +148,22 @@ see ideal groebnerBasis Ls_1 -- is prime
 see ideal groebnerBasis Ls_2 -- 
 univariate(y_4, Ls_1)
 univariate(y_4, Ls_2)
+
+-----------------
+-- Problem A-1 --
+-----------------
+  R = QQ[a,b,c,d,e]
+  I = ideal(
+    a+b+c+d+e,
+    d*e + c*d + b*c + a*e + a*b,
+    c*d*e + b*c*d + a*d*e + a*b*e + a*b*c,
+    b*c*d*e + a*c*d*e + a*b*d*e + a*b*c*e + a*b*c*d,
+    a*b*c*d*e - 1)
+  minimalPrimes I
+  dim I
+  primaryDecomposition I
+  I == radical I
+
 ----------------
 -- Problem B ---
 ----------------
