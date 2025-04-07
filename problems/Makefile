@@ -1,3 +1,6 @@
+week11: week11.tex
+	pdflatex week11.tex && open week11.pdf
+
 week8: week8.tex
 	pdflatex week8.tex && open week8.pdf
 

@@ -1,0 +1,250 @@
+\documentclass[11pt]{amsart}
+
+
+\usepackage{etoolbox}
+\newtoggle{answers}
+\togglefalse{answers}
+
+% Comment out the following line to not show answers.
+\toggletrue{answers}
+
+
+
+
+\usepackage{amssymb,amsmath,amsfonts,amsthm,mathrsfs,fullpage}
+%,amsmath,amsfonts,amsthm,mathrsfs}
+\usepackage[all]{xy}  % for commutative diagrams
+\SelectTips{cm}{10}
+\usepackage{mathrsfs,float}
+\numberwithin{equation}{section}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows,shapes,positioning,calc,patterns,cd}
+
+
+% Color comments
+\usepackage{color}
+
+%\definecolor{backgroundcolor}{rgb}{1,1,0.8}
+%\pagecolor{backgroundcolor}
+
+\newcommand{\commentr}[1]{{\color{red} [#1]}}
+\newcommand{\commentb}[1]{{\color{blue} [#1]}}
+\newcommand{\commentm}[1]{{\color{magenta} [#1]}}
+
+\newcommand{\bnum}{\begin{enumerate}} %Use with \item to create numbered lists
+\newcommand{\enum}{\end{enumerate}}
+\newcommand{\babc}{\bnum\renewcommand{\labelenumi}{(\alph{enumi})}}%Use with \item for abc lists
+\newcommand{\eabc}{\end{enumerate}}
+\newcommand{\bijk}{\bnum\renewcommand{\labelenmi}{\roman{enumi}.}}%Roman numeral lists
+\newcommand{\eijk}{\end{enumerate}}
+
+\usepackage{verbatim,moreverb}
+
+\newcommand{\kk}{\mathbb k}
+\renewcommand{\AA}{\mathbb A}
+\newcommand{\BB}{\mathbb B}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\DD}{\mathbb D}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\GG}{\mathbb G}
+\newcommand{\HH}{\mathbb H}
+\newcommand{\II}{\mathbb I}
+\newcommand{\JJ}{\mathbb J}
+\newcommand{\KK}{\mathbb K}
+\newcommand{\LL}{\mathbb L}
+\newcommand{\MM}{\mathbb M}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\renewcommand{\SS}{\mathbb S}
+\newcommand{\TT}{\mathbb T}
+\newcommand{\UU}{\mathbb U}
+\newcommand{\VV}{\mathbb V}
+\newcommand{\WW}{\mathbb W}
+\newcommand{\XX}{\mathbb X}
+\newcommand{\YY}{\mathbb Y}
+\newcommand{\ZZ}{\mathbb Z} 
+
+\newcommand{\Zhat}{\widehat\ZZ}
+
+\newcommand{\calA}{\mathcal A} 
+\newcommand{\C}{\mathcal C} 
+
+\newcommand{\OO}{\mathcal O}
+\newcommand{\F}{\mathscr F} %\renewcommand{\P}{\mathscr P}
+\newcommand{\Hh}{\mathscr H} 
+\newcommand{\N}{\mathscr N}\newcommand{\Ii}{\mathscr I}
+\newcommand{\Z}{\mathscr Z}
+\newcommand{\bb}{\mathfrak b}\newcommand{\m}{\mathfrak m}\newcommand{\M}{\mathcal M}
+\newcommand{\aA}{\mathfrak a} \newcommand{\fF}{\mathfrak f}
+\newcommand{\qq}{\mathfrak q} 
+\newcommand{\p}{\mathfrak p} \newcommand{\Pp}{\mathfrak P}
+\newcommand{\norm}[1]{ \left|\left| #1 \right|\right|  }
+\newcommand{\ang}[1]{ \langle #1 \rangle  }
+\newcommand{\aside}[1]{ \marginpar{#1} }
+\newcommand\legendre[2]{\Bigl(\frac{#1}{#2}\Bigr) }   \newcommand\Angle[2]{\langle #1,#2 \rangle}
+
+
+\def\Spec{\operatorname{Spec}} \def\id{\operatorname{id}}
+\def\Div{\operatorname{Div}}\def\tr{\operatorname{tr}}
+\def\Supp{\operatorname{Supp}} \def\Gal{\operatorname{Gal}}
+
+\def \GL {\operatorname{GL}_2}  
+\def \PGL {\operatorname{PGL}_2}
+\def \SL {\operatorname{SL}_2}
+\def \PSL {\operatorname{PSL}_2}
+
+\def\Res{\operatorname{Res}}
+\def\Aut{\operatorname{Aut}} \def\End{\operatorname{End}}
+
+\def\Prim{\operatorname{Prim}} \def\Fr{\operatorname{Frob}}
+\def\lcm{\operatorname{lcm}} \def\Li{\operatorname{Li}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Card}{\operatorname{Card}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\coimage}{\operatorname{coimage}}
+\newcommand{\image}{\operatorname{image}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\def \Ev {\operatorname{Ev}}
+\def \rad {\operatorname{rad}}
+
+\def \G {\mathcal G}
+\def \B {\mathcal B}
+
+
+
+
+
+\def\power{\mathcal{P}}
+\def\Xx{\mathscr X} \def\Zz{\mathscr Z} \def\Ss{\mathscr S} \def\Gg{\mathscr G}
+\def\Rr{\mathscr R}\def\Dd{\mathcal D}
+ \def\cC{\mathfrak c}
+\def\join{\vee}
+\def\meet{\wedge}
+\def\ord{\operatorname{ord}}
+
+\def\tors{\operatorname{tors}}
+\def\sfree{\operatorname{sf}}
+
+
+\def\bbar#1{\setbox0=\hbox{$#1$}\dimen0=.2\ht0 \kern\dimen0 \overline{\kern-\dimen0 #1}}
+\newcommand{\Qbar}{{\overline{\mathbb Q}}} 
+\newcommand{\Kbar}{\bbar{K}} 
+\newcommand{\kbar}{\bbar{k}} 
+\newcommand{\Fbar}{\bbar{F}} 
+\newcommand{\FFbar}{\overline{\FF}} 
+
+\newcommand{\smallpmod}[1]{\text{ }(\operatorname{mod } #1 )}
+
+\newcommand{\defi}[1]{\textsf{#1}} % for defined terms
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{conj}[thm]{Conjecture} 
+\newtheorem{example}[thm]{Example}
+\newtheorem{claim}{Claim}
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{remarks}[thm]{Remarks}
+
+
+\newenvironment{romanenum}{\hfill \begin{enumerate} \renewcommand{\theenumi}{\roman{enumi}}}{\end{enumerate}}
+\renewcommand{\Re}{\operatorname{Re}}
+
+\definecolor{webbrown}{rgb}{.6,0,0}
+\usepackage[
+   %    draft,
+        colorlinks,
+        linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown, 
+        backref,
+        %pdfauthor={David Zywina}, % add other authors
+    %   pdftitle={Paper title goes here},
+]{hyperref}
+\usepackage[alphabetic,backrefs,lite]{amsrefs} % for bibliography
+%Uncomment to double space:
+%\renewcommand{\baselinestretch}{2}
+
+\newcounter{excount}
+\newcommand\exercise[1]{\addtocounter{excount}{1}\noindent\textbf{Problem \arabic{excount}: }#1{$ $}\\}
+
+\newcommand\answer[1]{
+\iftoggle{answers}{{\noindent \color{blue} #1\\ }}{ } 
+}
+
+
+\begin{document}
+\setcounter{excount}{0}
+
+\title{CoCAAG, Winter 2025: Week 11 Questions}
+\maketitle
+\vspace{0.5cm}
+
+\bigskip
+
+\exercise{{\bf Packages in M2}
+  Write a small package on your own (or in small groups).  The package should have a function that creates an ideal
+  in a ring (e.g. choose a set of ideals, indexed by a parameter, and have it take a ring in as parameter,
+  and then create the ideal in that ring)  Please include a test and documentation for your package and your ideal creation
+  function.
+}
+
+\exercise{{\bf Examples for primary decomposition}
+  Find the minimal primes and a primary decomposition for one of the ideals suggested in the
+  file ``week11.m2''.
+  }
+
+\exercise{{\bf Splitting principles}
+  Which of the following hold? (prove or give a counterexample).
+  For each that does hold, if one chooses a (irredundant) PD of each ideal on the right hand side,
+  does combining them give a (irredundant) PD of the left hand side?
+  We use the notation e.g.: $(I,f) := I + \langle f \rangle$
+  \babc
+\item $I = (I : f^\infty) \cap (I, f^\ell)$, if $I : f^\infty = f^\ell$.  (We did this one already!)
+\item If $fg \in I$, and $\langle f, g \rangle = R$, then $I = (I,f) \cap (I,g)$. (We did this one too!)
+\item If $fg \in I$, then ${I} = (I,f) \cap (I,g)$.
+\item If $fg \in I$, then $\sqrt{I} = \sqrt{I,f} \cap \sqrt{I,g}$.
+\item if $I, J$ are ideals in $R$, then
+  \[ I = (I : J) \cap (I+J) \]
+\item if $I, J$ are ideals in $R$, then
+  \[ \sqrt{I} = \sqrt{I : J} \cap \sqrt{I+J} \]
+\item if $I, J$ are ideals in $R$, then
+  \[ {I} = (I : J) \cap (I : (I : J)) \]
+\item if $I, J$ are ideals in $R$, then
+  \[ \sqrt{I} = \sqrt{I : J} \cap \sqrt{I : (I : J)} \]
+  \eabc
+}
+
+\exercise{{\bf Free resolutions over localizations}
+  Recall that a free resolution over a local ring is called minimal if
+  every entry in every matrix is in the maximal ideal.
+  In the example below, find a minimal free resolution of $R_P/IR_P$, where
+  \babc
+  \item $P = \langle a,b,c \rangle$
+  \item $P = \langle a,b,d \rangle$
+  \item $P = \langle a,b,c,d \rangle$.
+  \eabc
+  }
+{\tiny\begin{verbatim}
+  R = QQ[a..d]
+  I = monomialCurveIdeal(R, {1,3,4}) -- rational quartic
+  F = res I
+  F.dd
+\end{verbatim}
+}
+
+
+
+
+
+
+
+\end{document}
