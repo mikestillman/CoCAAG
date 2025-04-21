@@ -159,11 +159,67 @@ univariate(y_4, Ls_2)
     c*d*e + b*c*d + a*d*e + a*b*e + a*b*c,
     b*c*d*e + a*c*d*e + a*b*d*e + a*b*c*e + a*b*c*d,
     a*b*c*d*e - 1)
+  (dim I, degree I)
   minimalPrimes I
   dim I
   primaryDecomposition I
   I == radical I
 
+  facs = univariate(a, I)
+  netList facs
+  L1 = for fac in facs list (
+      trim ideal groebnerBasis (
+        (I + ideal(fac#0))
+        ))
+  L1/dim
+  L1/degree
+  facs = univariate(b, L1_0)
+  netList oo
+  L2 = for fac in facs list (
+      trim ideal groebnerBasis (
+        (L1_0 + ideal(fac#0))
+        ))
+
+  splitRadical = method() 
+  splitRadical(RingElement, Ideal) := List => (v, I) -> (
+      facs := univariate(v, I);
+      for fac in facs list 
+      trim ideal groebnerBasis (
+        (I + ideal(fac#0))
+        )
+      )
+  splitRadical(RingElement, List) := List => (v, L) -> (
+      flatten for I in L list splitRadical(v, I)
+      )
+
+  splitRadical(List, Ideal) := List => (varlist, I) -> (
+      L := {I};
+      for v in varlist do (
+          L = splitRadical(v, L)
+          );
+      L
+      )
+///
+L1 = splitRadical(a, I)
+intersect L1 == I
+netList L1
+L2 = splitRadical(b, L1)
+intersect L2 == I
+#L2
+L3 = splitRadical(c, L2)
+#L3
+netList L3
+L4 = splitRadical(d, L3)
+#L4
+L5 = splitRadical(e, L4)
+
+Rlex = newRing(R, MonomialOrder => Lex)
+L5lex = for i in L5 list ideal groebnerBasis sub(i, Rlex)
+L5/isPrime
+
+use R
+splitRadical({a,b,c,d,e}, I)
+///
 ----------------
 -- Problem B ---
 ----------------
